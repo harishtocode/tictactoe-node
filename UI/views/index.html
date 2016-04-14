@@ -1,0 +1,118 @@
+﻿<!doctype html>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+
+<html ng-app="TicTacToeApp">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+    <title> AI based TicTacToe</title>
+    <!-- SCROLLS -->
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <style>
+        html {
+            overflow-y: scroll;
+        }
+
+        body {
+            padding-top: 50px;
+        }
+
+        td {
+            height: 50px;
+            width: 50px;
+            cursor: pointer;
+            vertical-align: middle !important;
+            padding: 0px !important;
+        }
+
+            td div {
+                width: 100%;
+                text-align: center;
+                font-size: 35px;
+                padding: 0px !important;
+            }
+
+        #todo-list {
+            margin-bottom: 30px;
+        }
+
+        .btn-align {
+            padding-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 50% !important;
+            margin: auto;
+            height: 450px;
+        }
+
+        .loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: white;
+            opacity: 0.5;
+            text-align: center;
+        }
+
+        .loader-content {
+            position: relative;
+            top: 40%;
+        }
+    </style>
+    <!-- SPELLS -->
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+<body ng-controller="mainController">
+    <div class="span2 loader" style="display:none;">
+        <img class="loader-content" src="../public/images/gif-load.gif" />
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="span6">
+                <table class="table table-striped table-bordered">
+                    <tbody>
+                        <tr ng-repeat="(rindex,row) in board">
+                            <td class="span2" ng-repeat="(cindex, val) in row track by $index" ng-click="val==0 && move(rindex,cindex)">
+                                <div ng-if="val== 1">
+                                    X
+                                </div>
+                                <div ng-if="val== 2">
+                                    0
+                                </div>
+                                <div ng-if="val== 0">
+
+                                </div>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <div class="row btn-align">
+            <div class="span2">
+                <input type="button" value="Restart Game" ng-click="refresh()">
+            </div>
+
+
+
+        </div>
+    </div>
+</body>
+</html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
+<script src="../public/js/jquery.bootstrap-growl.min.js"></script>
+<script src="../public/js/app.js"></script>
